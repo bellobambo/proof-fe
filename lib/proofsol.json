@@ -1,0 +1,495 @@
+{
+  "address": "2qijhn58A5Hwyqb2ivSsXddKqzeHD7pzz5CwLpMuhwjd",
+  "metadata": {
+    "name": "proofsol",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "create_course",
+      "discriminator": [
+        120,
+        121,
+        154,
+        164,
+        107,
+        180,
+        167,
+        241
+      ],
+      "accounts": [
+        {
+          "name": "course",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "lecturer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "owner",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "create_exam",
+      "discriminator": [
+        247,
+        135,
+        105,
+        245,
+        128,
+        52,
+        23,
+        97
+      ],
+      "accounts": [
+        {
+          "name": "exam",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "lecturer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "course"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "i64"
+        },
+        {
+          "name": "duration",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "enroll_course",
+      "discriminator": [
+        99,
+        88,
+        16,
+        143,
+        40,
+        253,
+        22,
+        47
+      ],
+      "accounts": [
+        {
+          "name": "enrollment",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "student",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "course"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "register_user",
+      "discriminator": [
+        2,
+        241,
+        150,
+        223,
+        99,
+        214,
+        116,
+        97
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "role",
+          "type": {
+            "defined": {
+              "name": "UserRole"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "submit_exam",
+      "discriminator": [
+        17,
+        226,
+        209,
+        16,
+        207,
+        107,
+        86,
+        229
+      ],
+      "accounts": [
+        {
+          "name": "student",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "exam"
+        },
+        {
+          "name": "qa"
+        },
+        {
+          "name": "result",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "student_answers",
+          "type": {
+            "vec": "string"
+          }
+        }
+      ]
+    },
+    {
+      "name": "upload_questions",
+      "discriminator": [
+        19,
+        184,
+        168,
+        251,
+        219,
+        38,
+        239,
+        69
+      ],
+      "accounts": [
+        {
+          "name": "qa",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "lecturer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "exam"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "questions",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "answers",
+          "type": {
+            "vec": "string"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Course",
+      "discriminator": [
+        206,
+        6,
+        78,
+        228,
+        163,
+        138,
+        241,
+        106
+      ]
+    },
+    {
+      "name": "Enrollment",
+      "discriminator": [
+        249,
+        210,
+        64,
+        145,
+        197,
+        241,
+        57,
+        51
+      ]
+    },
+    {
+      "name": "Exam",
+      "discriminator": [
+        217,
+        124,
+        206,
+        150,
+        202,
+        222,
+        128,
+        5
+      ]
+    },
+    {
+      "name": "ExamOutcome",
+      "discriminator": [
+        183,
+        24,
+        97,
+        94,
+        46,
+        13,
+        112,
+        210
+      ]
+    },
+    {
+      "name": "QuestionBank",
+      "discriminator": [
+        137,
+        210,
+        89,
+        140,
+        196,
+        125,
+        209,
+        181
+      ]
+    },
+    {
+      "name": "User",
+      "discriminator": [
+        159,
+        117,
+        95,
+        227,
+        239,
+        151,
+        58,
+        236
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "EmptyCourseTitle",
+      "msg": "Course title cannot be empty."
+    },
+    {
+      "code": 6001,
+      "name": "InvalidExamDetails",
+      "msg": "Invalid exam details."
+    },
+    {
+      "code": 6002,
+      "name": "InvalidQuestionFormat",
+      "msg": "Questions and answers must be non-empty and of equal length."
+    },
+    {
+      "code": 6003,
+      "name": "AnswerCountMismatch",
+      "msg": "Student answers count does not match question count."
+    }
+  ],
+  "types": [
+    {
+      "name": "Course",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "lecturer",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Enrollment",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "student",
+            "type": "pubkey"
+          },
+          {
+            "name": "course",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Exam",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "course",
+            "type": "pubkey"
+          },
+          {
+            "name": "date",
+            "type": "i64"
+          },
+          {
+            "name": "duration",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ExamOutcome",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "student",
+            "type": "pubkey"
+          },
+          {
+            "name": "exam",
+            "type": "pubkey"
+          },
+          {
+            "name": "score",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "QuestionBank",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "exam",
+            "type": "pubkey"
+          },
+          {
+            "name": "questions",
+            "type": {
+              "vec": "string"
+            }
+          },
+          {
+            "name": "answers",
+            "type": {
+              "vec": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "User",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "role",
+            "type": {
+              "defined": {
+                "name": "UserRole"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserRole",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Lecturer"
+          },
+          {
+            "name": "Student"
+          }
+        ]
+      }
+    }
+  ]
+}
